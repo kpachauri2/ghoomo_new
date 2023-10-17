@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './css/formstyle.css';
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -19,39 +20,28 @@ function RegistrationForm() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
+<div className="form-container">
+  <form>
+    <div className="form-input">
+      <label className="form-label" htmlFor="username">
+        Username
+      </label>
+      <input type="text" id="username" />
     </div>
+
+    <div className="form-input">
+      <label className="form-label" htmlFor="password">
+        Password
+      </label>
+      <input type="password" id="password" />
+    </div>
+
+    <button className="submit-button" type="submit">
+      Submit
+    </button>
+  </form>
+</div>
+
   );
 }
 

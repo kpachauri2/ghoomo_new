@@ -1,20 +1,12 @@
+// App.js
 import React from 'react';
-import {  Routes, Route, BrowserRouter } from 'react-router-dom';
-import RegistrationForm from './components/RegistrationForm';
-import LoginForm from './components/LoginForm';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <BrowserRouter>
-  
-     <Routes>
-      {/* <Switch> */}
-        <Route path="/register" component={RegistrationForm} />
-        <Route path="/login" component={LoginForm} />
-        {/* Add more routes as needed */}
-       {/* </Switch> */}
-    </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <AppRoutes />
+    </div>
   );
 }
 

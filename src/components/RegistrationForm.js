@@ -1,48 +1,64 @@
-import React, { useState } from 'react';
-import './css/formstyle.css';
+// Registration.js
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    name: '',
+class Registration extends Component {
+  state = {
+    username: '',
     email: '',
     password: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleRegistrationSubmit = (e) => {
     e.preventDefault();
-    // Send the registration data to the server (backend) for processing.
-    // You'll implement this later when setting up the backend.
+    // Implement registration logic here
   };
 
-  return (
-<div className="form-container">
-  <form>
-    <div className="form-input">
-      <label className="form-label" htmlFor="username">
-        Username
-      </label>
-      <input type="text" id="username" />
-    </div>
-
-    <div className="form-input">
-      <label className="form-label" htmlFor="password">
-        Password
-      </label>
-      <input type="password" id="password" />
-    </div>
-
-    <button className="submit-button" type="submit">
-      Submit
-    </button>
-  </form>
-</div>
-
-  );
+  render() {
+    return (
+      <div>
+        <h2>User Registration</h2>
+        <form onSubmit={this.handleRegistrationSubmit}>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <Link to="/login">Already have an account? Login here.</Link>
+        </div>
+    );
+  }
 }
 
-export default RegistrationForm;
+export default Registration;
